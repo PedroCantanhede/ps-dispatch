@@ -25,5 +25,160 @@
   <body>
     <div id="app"></div>
     
+    <!-- Mock de eventos do FiveM -->
+    <script>
+        // Simula o GetParentResourceName
+        window.GetParentResourceName = () => 'ps-dispatch';
+
+        // Função helper para disparar eventos
+        function dispatchNUIMessage(action, data) {
+            window.dispatchEvent(
+                new MessageEvent('message', {
+                    data: { action, data }
+                })
+            );
+        }
+
+        // Aguarda carregar completamente
+        window.addEventListener('load', () => {
+            // Pequeno delay para garantir que o Svelte inicializou
+            setTimeout(() => {
+                // 1. Configuração inicial da UI
+                dispatchNUIMessage('setupUI', {
+                    player: {
+                        citizenid: 'TEST123',
+                        job: {
+                            name: 'LSPD',
+                            type: 'leo'
+                        },
+                        charinfo: {
+                            firstname: 'John',
+                            lastname: 'Doe'
+                        },
+                        metadata: {
+                            callsign: '1-A-12'
+                        }
+                    },
+                    locales: {
+                        units: 'Units',
+                        additionals: 'Additional',
+                        dispatch_attach: 'Attach',
+                        dispatch_detach: 'Detach'
+                    },
+                    keybind: 'F10',
+                    maxCallList: 10,
+                    shortCalls: false
+                });
+
+                // 2. Lista de dispatches
+                dispatchNUIMessage('setDispatchs', [
+                    {
+                        id: 1,
+                        code: '10-31',
+                        message: 'Robbery in Progress',
+                        priority: 1,
+                        icon: 'fas fa-gun',
+                        time: new Date().toISOString(),
+                        name: 'Jane Smith',
+                        number: '555-0123',
+                        information: 'Armed suspect, multiple hostages',
+                        street: 'Legion Square',
+                        gender: 'Male',
+                        weapon: 'Pistol',
+                        vehicle: 'Sultan',
+                        plate: 'ABC123',
+                        color: 'Black',
+                        class: 'Sports',
+                        doors: '4',
+                        heading: 'North',
+                        units: [],
+                        jobs: ['leo']
+                    },
+                    {
+                        id: 2,
+                        code: '10-50',
+                        message: 'Traffic Accident',
+                        priority: 0,
+                        icon: 'fas fa-car-crash',
+                        time: new Date(Date.now() - 300000).toISOString(),
+                        name: 'Bob Johnson',
+                        number: '555-0456',
+                        information: 'Minor injuries reported',
+                        street: 'Great Ocean Highway',
+                        units: [
+                            {
+                                citizenid: 'TEST123',
+                                job: {
+                                    name: 'LSPD',
+                                    type: 'leo'
+                                },
+                                charinfo: {
+                                    firstname: 'John',
+                                    lastname: 'Doe'
+                                },
+                                metadata: {
+                                    callsign: '1-A-12'
+                                }
+                            }
+                        ],
+                        jobs: ['leo', 'ems']
+                    }
+                ]);
+
+                // 3. Tornar visível
+                dispatchNUIMessage('setVisible', true);
+
+                // 4. Simular nova chamada após 3 segundos
+                setTimeout(() => {
+                    dispatchNUIMessage('newCall', {
+                        data: {
+                            id: 3,
+                            code: '10-90',
+                            message: 'Alarm Activated',
+                            priority: 1,
+                            icon: 'fas fa-bell',
+                            time: new Date().toISOString(),
+                            name: 'Security System',
+                            information: 'Silent alarm at Fleeca Bank',
+                            street: 'Route 68',
+                            units: [],
+                            jobs: ['leo']
+                        },
+                        timer: 15000
+                    });
+                }, 3000);
+
+            }, 300);
+        });
+
+        // Função global para testar no console
+        window.testCall = function() {
+            dispatchNUIMessage('newCall', {
+                data: {
+                    id: Math.floor(Math.random() * 1000),
+                    code: '10-99',
+                    message: 'Test Call',
+                    priority: Math.random() > 0.5 ? 1 : 0,
+                    icon: 'fas fa-question',
+                    time: new Date().toISOString(),
+                    information: 'This is a test call',
+                    street: 'Test Street',
+                    units: [],
+                    jobs: ['leo']
+                },
+                timer: 10000
+            });
+            console.log('Test call dispatched!');
+        };
+
+        // Atalho para mostrar/esconder
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '=') {
+                dispatchNUIMessage('setVisible', true);
+            }
+        });
+
+        console.log('Mock loaded! Use testCall() to create a new dispatch');
+    </script>
   </body>
 </html>
