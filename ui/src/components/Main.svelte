@@ -68,22 +68,22 @@
     {#each notifications.slice().reverse() as dispatch, index (dispatch.data.id)}
       <div class="w-full h-fit my-[0.5vh] font-medium {dispatch.data.priority == 1 ? " bg-priority_secondary" : " bg-secondary"}" transition:fly="{{ x: $IS_RIGHT_MARGIN ? 400 : -400 }}">
         <div class="flex items-center gap-[1vh] p-[1vh] text-[1.5vh] {dispatch.data.priority == 1 ? " bg-priority_primary" : " bg-primary"}">
-          <p class="px-[2vh] py-[0.2vh] rounded-full bg-accent_green">
+          <p class="px-[2vh] py-[0.2vh] rounded-full text-neutral">
             #{dispatch.data.id}
           </p>
-          <p class="px-[2vh] py-[0.2vh] rounded-full {dispatch.data.priority == 1 ? " bg-accent_red" : "bg-accent_cyan"}">
+          <p class="px-[2vh] py-[0.2vh] rounded-full text-neutral">
             {dispatch.data.code}
           </p>
           <p class="py-[0.2vh]">
             {dispatch.data.message}
           </p>
-          <i class="{dispatch.data.icon} py-[0.2vh] ml-auto mr-[0.5vh] {dispatch.data.priority == 1 ? " text-accent_red" : "text-accent_cyan"}"></i>
+          <i class="{dispatch.data.icon} py-[0.2vh] ml-auto mr-[0.5vh] text-neutral"></i>
         </div>
-        <div class="flex">
+        <div class="flex" style="position: relative;">
           <div class="flex flex-col p-[1vh] gap-y-[0.4vh] text-[1.4vh] w-[70%]">
               {#if dispatch.data}
                 {#each getDispatchData(dispatch) as field}
-                  {#if field.value}
+                  {#if field.value && field.label !== 'Time'}
                     <p>
                       <i class={field.icon + ' mr-[0.5vh]'}></i>
                       {field.label}: {field.value}
@@ -92,12 +92,16 @@
                 {/each}
               {/if}
           </div>
-          <div class="w-[30%] flex items-end justify-center mb-[1vh]">
+          <div class="w-[30%] flex flex-col items-center justify-end mb-[1vh] gap-[0.5vh]" style="position: relative;">
             {#if index === 0}
               <p class="px-[1.5vh] py-[0.4vh] rounded-full text-[1.3vh] {dispatch.data.priority == 1 ? " bg-priority_primary" : " bg-primary"}">
                 [{$RESPOND_KEYBIND}] Respond
               </p>
             {/if}
+            <p class="text-[1.3vh] text-neutral" style="display: flex; align-items: center; gap: 0.5vh;">
+              <i class="fas fa-clock"></i>
+              {timeAgo(dispatch.data.time)}
+            </p>
           </div>
         </div>
       </div>

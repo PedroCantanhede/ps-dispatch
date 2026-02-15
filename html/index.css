@@ -519,7 +519,7 @@ video {
 }
 .bg-accent_green {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 163 121 / var(--tw-bg-opacity));
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 .bg-accent_red {
   --tw-bg-opacity: 1;
@@ -539,7 +539,7 @@ video {
 }
 .bg-priority_quaternary {
   --tw-bg-opacity: 1;
-  background-color: rgb(154 0 58 / var(--tw-bg-opacity));
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 .bg-priority_secondary {
   --tw-bg-opacity: 1;
@@ -555,7 +555,7 @@ video {
 }
 .bg-tertiary {
   --tw-bg-opacity: 1;
-  background-color: rgb(47 60 71 / var(--tw-bg-opacity));
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 .p-2 {
   padding: 0.5rem;
@@ -616,6 +616,26 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+.text-neutral {
+  color: #cfcfcf;
+}
+.badge-number {
+  background-color: #1e1e20 !important;
+  color: #cfcfcf !important;
+  border: 1px solid #4f4f4f !important;
+  border-radius: 0.5vh !important;
+}
+
+/* Bordas arredondadas nos cards de dispatch */
+.bg-secondary,
+.bg-priority_secondary {
+  overflow: hidden;
+}
+
+/* Divisor entre header e dados */
+.flex.items-center.gap-\[1vh\].p-\[1vh\].text-\[1\.5vh\] {
+  border-bottom: 1px solid #6d6d6d ;
+}
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
     var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
@@ -658,4 +678,48 @@ body {
 .hover\:bg-secondary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(0 149 255/ var(--tw-bg-opacity));
+}
+
+/* Adicionar container relativo para posicionamento do tempo */
+.flex.flex-col.p-\[1vh\].gap-y-\[0\.4vh\].text-\[1\.4vh\].w-full.text-start {
+  position: relative;
+}
+
+/* Estilo para o tempo no canto inferior direito (Menu) */
+.flex.flex-col.p-\[1vh\].gap-y-\[0\.4vh\].text-\[1\.4vh\].w-full.text-start::after {
+  content: attr(data-time);
+  position: absolute;
+  bottom: 1vh;
+  right: 1vh;
+  font-size: 1.3vh;
+  color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+}
+
+/* Container relativo para Main (notificações) */
+.flex.flex-col.p-\[1vh\].gap-y-\[0\.4vh\].text-\[1\.4vh\].w-\[70\%\] {
+  position: relative;
+}
+
+/* Estilo para o wrapper principal das notificações */
+.flex[style*="position: relative"] {
+  position: relative !important;
+}
+
+/* Esconder o campo Horário da lista */
+p:has(> i.fa-clock) {
+  display: none !important;
+}
+
+/* Estilo para o badge do tempo */
+.time-badge-menu,
+.time-badge-notification {
+  color: #6d6d6d !important;
+}
+
+.time-badge-menu i,
+.time-badge-notification i {
+  color: #6d6d6d !important;
 }

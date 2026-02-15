@@ -133,26 +133,32 @@
     {#each $processedDispatchMenu as dispatch}
     <button class="w-full h-fit mb-[1vh] font-medium {dispatch.priority == 1 ? 'bg-priority_secondary' : 'bg-secondary'}" on:click={() => toggleDispatch(dispatch.id)}>
         <div class="flex items-center gap-[1vh] p-[1vh] text-[1.5vh] {dispatch.priority == 1 ? " bg-priority_primary" : " bg-primary"}">
-            <p class="px-[2vh] py-[0.2vh] rounded-full bg-accent_green">
+            <p class="px-[2vh] py-[0.2vh] rounded-full text-neutral">
               #{dispatch.id}
             </p>
-            <p class="px-[2vh] py-[0.2vh] rounded-full {dispatch.priority == 1 ? " bg-accent_red" : "bg-accent_cyan"}">
+            <p class="px-[2vh] py-[0.2vh] rounded-full text-neutral">
               {dispatch.code}
             </p>
             <p class="py-[0.2vh]">
               {dispatch.message}
             </p>
-            <i class="{dispatch.icon} py-[0.2vh] ml-auto mr-[0.5vh] {dispatch.priority == 1 ? " text-accent_red" : "text-accent_cyan"}"></i>
+            <i class="{dispatch.icon} py-[0.2vh] ml-auto mr-[0.5vh] text-neutral"></i>
           </div>
-          <div class="flex flex-col p-[1vh] gap-y-[0.4vh] text-[1.4vh] w-full text-start">
-              {#each getDispatchData(dispatch) as field}
-                {#if field.value}
-                  <p>
-                    <i class={field.icon + ' mr-[0.5vh]'}></i>
-                    {field.label}: {field.value}
-                  </p>
-                {/if}
-              {/each}
+          <div style="position: relative;">
+            <div class="flex flex-col p-[1vh] gap-y-[0.4vh] text-[1.4vh] w-full text-start">
+                {#each getDispatchData(dispatch) as field}
+                  {#if field.value && field.label !== 'Time'}
+                    <p>
+                      <i class={field.icon + ' mr-[0.5vh]'}></i>
+                      {field.label}: {field.value}
+                    </p>
+                  {/if}
+                {/each}
+            </div>
+            <div class="text-neutral" style="position: absolute; bottom: 1vh; right: 1vh; display: flex; align-items: center; gap: 0.5vh; font-size: 1.3vh;">
+              <i class="fas fa-clock"></i>
+              <span>{timeAgo(dispatch.time)}</span>
+            </div>
           </div>
         </button>
         <!-- UNITS, ATTACH AND DETACH -->
