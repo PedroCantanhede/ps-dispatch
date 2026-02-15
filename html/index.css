@@ -632,6 +632,12 @@ video {
   overflow: hidden;
 }
 
+/* Alinhar controles e menu no topo */
+.w-screen.h-screen.flex.items-center.justify-end {
+  align-items: flex-start !important;
+  padding-top: 1.5vh;
+}
+
 /* Divisor entre header e dados */
 .flex.items-center.gap-\[1vh\].p-\[1vh\].text-\[1\.5vh\] {
   border-bottom: 1px solid #6d6d6d ;
