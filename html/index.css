@@ -625,6 +625,18 @@ video {
   border: 1px solid #4f4f4f !important;
   border-radius: 0.5vh !important;
 }
+.badge-code-danger {
+  background-color: #491916 !important;
+  color: #fde3de !important;
+  border: none !important;
+  border-radius: 0.5vh !important;
+}
+.badge-code-info {
+  background-color: #1d324f !important;
+  color: #c4e8fa !important;
+  border: none !important;
+  border-radius: 0.5vh !important;
+}
 
 /* Bordas arredondadas nos cards de dispatch */
 .bg-secondary,

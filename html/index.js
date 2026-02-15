@@ -1704,12 +1704,13 @@ function _t(e) {
       ((k = M()),
         A && A.c(),
         (h = x()),
-        _(l, "class", "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"),
+        _(l, "class", "px-[2vh] py-[0.2vh] badge-number text-neutral"),
         _(
           f,
           "class",
           (c =
-            "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"),
+            "px-[2vh] py-[0.2vh] " +
+            (e[21].priority == 1 ? "badge-code-danger" : "badge-code-info")),
         ),
         _(p, "class", "py-[0.2vh]"),
         _(
@@ -1771,7 +1772,8 @@ function _t(e) {
           (R & 64 &&
             c !==
               (c =
-                "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"))) &&
+                "px-[2vh] py-[0.2vh] " +
+                (e[21].priority == 1 ? "badge-code-danger" : "badge-code-info")))) &&
           _(f, "class", c),
         (!v || R & 64) && b !== (b = e[21].message + "") && B(N, b),
         (!v ||
@@ -2309,12 +2311,13 @@ function wt(e, t) {
         (v = g("div")),
         A && A.c(),
         (I = M()),
-        _(i, "class", "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"),
+        _(i, "class", "px-[2vh] py-[0.2vh] badge-number text-neutral"),
         _(
           o,
           "class",
           (m =
-            "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"),
+            "px-[2vh] py-[0.2vh] " +
+            (t[6].data.priority == 1 ? "badge-code-danger" : "badge-code-info")),
         ),
         _(b, "class", "py-[0.2vh]"),
         _(
@@ -2381,7 +2384,8 @@ function wt(e, t) {
           (R & 1 &&
             m !==
               (m =
-                "px-[2vh] py-[0.2vh] badge-number text-neutral badge-number"))) &&
+                "px-[2vh] py-[0.2vh] " +
+                (t[6].data.priority == 1 ? "badge-code-danger" : "badge-code-info")))) &&
           _(o, "class", m),
         (!O || R & 1) && N !== (N = t[6].data.message + "") && B($, N),
         (!O ||
