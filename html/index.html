@@ -60,10 +60,10 @@
                         }
                     },
                     locales: {
-                        units: 'Units',
+                        units: 'Unidades',
                         additionals: 'Additional',
-                        dispatch_attach: 'Attach',
-                        dispatch_detach: 'Detach'
+                        dispatch_attach: 'Enviar',
+                        dispatch_detach: 'Retirar'
                     },
                     keybind: 'F10',
                     maxCallList: 10,
@@ -217,26 +217,30 @@
             });
 
             // Para as notificações (Main)
-            const notificationWrappers = document.querySelectorAll('.flex[style*="position: relative"]');
-            notificationWrappers.forEach(wrapper => {
-                const card = wrapper.querySelector('.flex.flex-col.p-\\[1vh\\].gap-y-\\[0\\.4vh\\].text-\\[1\\.4vh\\].w-\\[70\\%\\]');
-                if (card && !card.querySelector('.time-badge-notification')) {
-                    // Encontrar o tempo no texto (campo escondido)
-                    const timeText = Array.from(card.querySelectorAll('p')).find(p => {
-                        const icon = p.querySelector('i.fa-clock');
-                        return icon !== null;
-                    });
+            const notificationDataCols = document.querySelectorAll('.flex.flex-col.p-\\[1vh\\].gap-y-\\[0\\.4vh\\].text-\\[1\\.4vh\\].w-\\[70\\%\\]');
+            notificationDataCols.forEach(dataCol => {
+                // Encontrar a coluna direita (w-[30%]) que é irmã da dataCol
+                const parentFlex = dataCol.parentElement;
+                if (!parentFlex) return;
+                const rightCol = parentFlex.querySelector('.w-\\[30\\%\\]');
+                if (!rightCol || rightCol.querySelector('.time-badge-notification')) return;
 
-                    if (timeText) {
-                        const timeValue = timeText.textContent.replace(/Horário:\s*/i, '').trim();
+                // Encontrar o tempo no texto (campo escondido)
+                const timeText = Array.from(dataCol.querySelectorAll('p')).find(p => {
+                    const icon = p.querySelector('i.fa-clock');
+                    return icon !== null;
+                });
 
-                        const timeBadge = document.createElement('div');
-                        timeBadge.className = 'time-badge-notification';
-                        timeBadge.style.cssText = 'position: absolute; bottom: 1vh; right: 1vh; display: flex; align-items: center; gap: 0.5vh; font-size: 1.3vh; color: #4e4e50;';
-                        timeBadge.innerHTML = `<i class="fa-regular fa-clock" style="color: #4e4e50;"></i><span>${timeValue}</span>`;
+                if (timeText) {
+                    const timeValue = timeText.textContent.replace(/Horário:\s*/i, '').trim();
 
-                        card.appendChild(timeBadge);
-                    }
+                    const timeBadge = document.createElement('div');
+                    timeBadge.className = 'time-badge-notification';
+                    timeBadge.style.cssText = 'display: flex; align-items: center; gap: 0.5vh; font-size: 1.3vh; color: #6d6d6d; margin-bottom: 0.5vh;';
+                    timeBadge.innerHTML = `<i class="fa-regular fa-clock" style="color: #6d6d6d;"></i><span>${timeValue}</span>`;
+
+                    // Inserir o tempo ANTES do botão (primeiro filho da coluna direita)
+                    rightCol.insertBefore(timeBadge, rightCol.firstChild);
                 }
             });
         }
