@@ -27,7 +27,20 @@ Do not create issues on GitHub if you need help. Issues are for bug reporting an
 * Configure your [language](https://github.com/Project-Sloth/ps-dispatch#change-language)
 * Restart your server.
 
-# Preview
+# Preview NEW
+## Redesign
+This is a redesign of the QBCore Dispatch NUI.
+
+<img src="./github/nui-dispatch.gif" width="600">
+
+## Short Notifications
+<img src="./github/nui-curta.png" width="600">
+
+## Long Notifications
+<img src="./github/nui-longa.png" width="600">
+<img src="./github/nui-longa2.png" width="600">
+
+# Preview OLD
 ## Short Notifications
 Dispatch notifications are sent containing only the alert name, omitting additional details to help over populated servers. For more information, the dispatch menu can be accessed. Can be configured on [Config.ShortCalls](https://github.com/Project-Sloth/ps-dispatch/blob/40ffc466ec7ffa14faaf40a68e8b3a9a92c72db6/shared/config.lua#L3C1-L3C18), false by default.
 
