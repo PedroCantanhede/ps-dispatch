@@ -1,3 +1,11 @@
+<h1 align="center">
+    ◾ NUI DISPATCH FIVEM ◾
+</h1>
+
+<p align="center">
+  <img alt="dispatch-nui" src="./github/dispatch-nui.png" width="100%">
+</p>
+
 # PS Dispatch
 
 Integrated with [ps-mdt](https://github.com/Project-Sloth/ps-mdt)

@@ -1201,7 +1201,8 @@ function st(e) {
     a,
     f = e[27].value + "",
     o,
-    u;
+    u,
+    q;
   return {
     c() {
       ((t = g("p")),
@@ -1209,12 +1210,15 @@ function st(e) {
         (i = M()),
         (r = j(s)),
         (a = j(": ")),
+        (q = g("span")),
         (o = j(f)),
         (u = M()),
-        _(n, "class", (l = e[27].icon + " mr-[0.5vh]")));
+        _(n, "class", (l = e[27].icon + " mr-[0.5vh]")),
+        _(t, "class", "dispatch-label"),
+        _(q, "class", "dispatch-value"));
     },
     m(c, m) {
-      (L(c, t, m), d(t, n), d(t, i), d(t, r), d(t, a), d(t, o), d(t, u));
+      (L(c, t, m), d(t, n), d(t, i), d(t, r), d(t, a), d(q, o), d(t, q), d(t, u));
     },
     p(c, m) {
       (m & 64 && l !== (l = c[27].icon + " mr-[0.5vh]") && _(n, "class", l),
@@ -2173,7 +2177,8 @@ function vt(e) {
     a,
     f = e[9].value + "",
     o,
-    u;
+    u,
+    q;
   return {
     c() {
       ((t = g("p")),
@@ -2181,12 +2186,15 @@ function vt(e) {
         (i = M()),
         (r = j(s)),
         (a = j(": ")),
+        (q = g("span")),
         (o = j(f)),
         (u = M()),
-        _(n, "class", (l = e[9].icon + " mr-[0.5vh]")));
+        _(n, "class", (l = e[9].icon + " mr-[0.5vh]")),
+        _(t, "class", "dispatch-label"),
+        _(q, "class", "dispatch-value"));
     },
     m(c, m) {
-      (L(c, t, m), d(t, n), d(t, i), d(t, r), d(t, a), d(t, o), d(t, u));
+      (L(c, t, m), d(t, n), d(t, i), d(t, r), d(t, a), d(q, o), d(t, q), d(t, u));
     },
     p(c, m) {
       (m & 1 && l !== (l = c[9].icon + " mr-[0.5vh]") && _(n, "class", l),

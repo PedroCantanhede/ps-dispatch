@@ -734,6 +734,17 @@ body {
 }
 
 
+/* Cores dos campos de dados: label/ícone em #9CA3AF, valor em #cfcfcf */
+.dispatch-label {
+  color: #9CA3AF;
+}
+.dispatch-label i {
+  color: #9CA3AF;
+}
+.dispatch-value {
+  color: #cfcfcf;
+}
+
 /* Esconder o campo Horário da lista */
 p:has(> i.fa-clock) {
   display: none !important;
