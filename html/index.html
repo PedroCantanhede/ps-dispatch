@@ -41,6 +41,10 @@
 
         // Aguarda carregar completamente
         window.addEventListener('load', () => {
+            // Só executa mock fora do FiveM (FiveM tem invokeNative definido)
+            const isFiveM = typeof window.invokeNative !== 'undefined';
+            if (isFiveM) return;
+
             // Pequeno delay para garantir que o Svelte inicializou
             setTimeout(() => {
                 // 1. Configuração inicial da UI
